@@ -1,4 +1,6 @@
 class Person(val name: String, val salary: Double) {
+  val x: Int = 10
+
   def this() {
     this("LALA", 12)
   }
@@ -6,15 +8,28 @@ class Person(val name: String, val salary: Double) {
   def this(x: String) {
     this(x, 11)
   }
+
+  def printout(): Unit = {
+    println(x)
+  }
 }
 
 new Person()
 
 class Employee(name: String, override val salary: Double) extends Person {
+  override val x: Int = 20
+
   def this() {
     this("A", 11)
   }
+
+  override def printout() = {
+    println(x)
+    super.printout()
+  }
 }
+
+new Employee().printout()
 
 val alien: {def greeting: String} = new Person("Fred") {
   def greeting = "greeting"
